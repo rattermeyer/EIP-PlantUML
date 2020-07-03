@@ -1,10 +1,65 @@
 /' General Styling '/
 
-!include "sprites/filter.puml" 
+!include sprites/aggregator.puml
+!include sprites/bridge.puml 
+!include sprites/channel_adapter_left.puml 
+!include sprites/channel_adapter_right.puml 
+!include sprites/channel_purger.puml 
+!include sprites/claim_check.puml 
+!include sprites/correlation_identifier.puml 
+!include sprites/command_message.puml 
+!include sprites/composed_message_processor.puml 
+!include sprites/scatter_gather.puml 
+!include sprites/content_based_router.puml 
+!include sprites/content_filter.puml 
+!include sprites/control_bus.puml 
+!include sprites/correlation_identifier.puml 
+!include sprites/datatype_channel.puml 
+!include sprites/data_enricher.puml 
+!include sprites/dead_letter_queue.puml 
+!include sprites/detour.puml 
+!include sprites/document_message.puml 
+!include sprites/durable_subscriber.puml 
+!include sprites/eventdriven_consumer.puml 
+!include sprites/event_message.puml 
+!include sprites/invalid_message_channel.puml 
+!include sprites/message.puml 
+!include sprites/message_bus.puml 
+!include sprites/message_dispatcher.puml 
+!include sprites/message_endpoint.puml 
+!include sprites/message_expiration.puml 
+!include sprites/message_filter.puml 
+!include sprites/message_router.puml 
+!include sprites/message_sequence.puml 
+!include sprites/message_store.puml 
+!include sprites/message_translator.puml 
+!include sprites/messaging_gateway.puml 
+!include sprites/messaging_mapper.puml 
+!include sprites/normalizer.puml 
+!include sprites/nondurable_subscriber.puml 
+!include sprites/nondurable_subscriber.puml 
+!include sprites/polling_consumer.puml 
+!include sprites/process_manager.puml 
+!include sprites/queue.puml 
+!include sprites/recipient_list.puml 
+!include sprites/request_reply.puml 
+!include sprites/resequencer.puml 
+!include sprites/return_address.puml 
+!include sprites/routing_slip.puml 
+!include sprites/selective_consumer.puml 
+!include sprites/service_activator.puml 
+!include sprites/smart_proxy.puml 
+!include sprites/splitter.puml 
+!include sprites/test_message.puml 
+!include sprites/transactional_consumer.puml 
+!include sprites/transactional_producer.puml 
+!include sprites/unwrapper.puml 
+!include sprites/wire_tap.puml 
+!include sprites/wrapper.puml 
 
 skinparam defaultTextAlignment center
 
-!function HIDE_STEREOTYPES()
+!procedure HIDE_STEREOTYPES()
   Hide <<message>> stereotype
   Hide <<command message>>  stereotype
   Hide <<document message>>  stereotype
@@ -25,6 +80,7 @@ skinparam defaultTextAlignment center
   Hide <<aggregator>> stereotype
   Hide <<resequencer>> stereotype
   Hide <<composed msg processor>> stereotype
+  Hide <<scatter gather>> stereotype
   Hide <<routing slip>> stereotype
   Hide <<process manager>> stereotype
   Hide <<message broker>> stereotype
@@ -64,9 +120,193 @@ skinparam defaultTextAlignment center
   Hide <<smart proxy>> stereotype
   Hide <<test message>> stereotype
   Hide <<channel purger>>  stereotype
-!endfunction
+!endprocedure
 
 !define LAYOUT_LEFT_RIGHT() left to right direction
+
+!define COMPONENT_BG_COLOR #FFFFFF
+
+skinparam rectangle<<message router>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<message translator>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<message endpoint>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<message>> {
+    BackgroundColor #FFFFFF
+}
+skinparam rectangle<<command message>> {
+    BackgroundColor #FFFFFF
+}
+skinparam rectangle<<document message>> {
+    BackgroundColor #FFFFFF
+}
+skinparam rectangle<<event message>> {
+    BackgroundColor #FFFFFF
+}
+skinparam rectangle<<request-reply>> {
+    BackgroundColor #FFFFFF
+}
+skinparam rectangle<<return address>> {
+    BackgroundColor #FFFFFF
+}
+skinparam rectangle<<correlation identifier>> {
+    BackgroundColor #FFFFFF
+}
+skinparam rectangle<<message sequence>> {
+    BackgroundColor #FFFFFF
+}
+skinparam rectangle<<message expiration>> {
+    BackgroundColor #FFFFFF
+}
+
+skinparam rectangle<<message router>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<filter>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<content-based router>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<message filter>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<dynamic message router>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<recipient list>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<splitter>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<aggregator>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<resequencer>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<composed msg processor>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<scatter gather>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<routing slip>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<process manager>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<message broker>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<message translator>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<wrapper>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<unwrapper>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<data enricher>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<content filter>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<normalizer>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<message endpoint>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<messaging gateway>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<messaging mapper>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<transactional producer>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<transactional consumer>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<polling consumer>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<event-driven consumer>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<message dispatcher>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<selective consumer>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<durable subscriber>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<non-durable subscriber>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<service activator>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<message channel>> {
+    BackgroundColor #E3E3E3
+}
+skinparam rectangle<<point-to-point channel>> {
+    BackgroundColor #E3E3E3
+}
+skinparam rectangle<<publish-subscribe channel>> {
+    BackgroundColor #E3E3E3
+}
+skinparam rectangle<<datatype channel>> {
+    BackgroundColor #E3E3E3
+}
+skinparam rectangle<<invalid message channel>> {
+    BackgroundColor #E3E3E3
+}
+skinparam rectangle<<dead letter channel>> {
+    BackgroundColor #E3E3E3
+}
+skinparam rectangle<<channel adapter left>> {
+    BackgroundColor #CCFFFF
+}
+skinparam rectangle<<channel adapter right>> {
+    BackgroundColor #CCFFFF
+}
+skinparam rectangle<<messaging bridge>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<message bus>> {
+    BackgroundColor #E3E3E3
+}
+skinparam rectangle<<detour>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<wire tap>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<message store>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<smart proxy>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<test message>> {
+    BackgroundColor #CCFF99
+}
+skinparam rectangle<<channel purger>> {
+    BackgroundColor #CCFF99
+}
 
 /'  ########################################################
     ################## Message Construct  ################## 
@@ -214,6 +454,8 @@ _alias -- _rulebase
     Link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/BroadcastAggregate.html
     Info: No icon defined yet
 '/
+!define ScatterGather(_alias) rectangle "<$scatter_gather>" as _alias <<scatter gather>>
+!define ScatterGather(_alias, _label) rectangle "<$scatter_gather>\r _label" as _alias <<scatter gather>>
 
 /'  EIP Pattern: Routing Slip
     Link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/RoutingTable.html
@@ -442,13 +684,13 @@ _alias -- _datasource
     Link: h‚ttps://www.enterpriseintegrationpatterns.com/patterns/messaging/ControlBus.html
 '/
 Hide <<control bus>> stereotype
-!function ControlBus($alias)
+!procedure ControlBus($alias)
   rectangle "<$control_bus>" as $alias <<control bus>> #transparent
   skinparam rectangle {
     BorderColor<<control bus>> transparent
     Shadowing<<control bus>> false
   }  
-!endfunction
+!endprocedure
 
 /'  EIP Pattern: Detour
     Link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/Detour.html
